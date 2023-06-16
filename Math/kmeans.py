@@ -4,7 +4,7 @@ import random
 import matplotlib.pyplot as plt
 
 from sklearn.datasets import make_blobs
-X, y = make_blobs(n_samples=400, centers = 2, cluster_std=0.60, random_state=4)
+X, y = make_blobs(n_samples=400, centers = 4, cluster_std=0.9, random_state=16)
 
 x = list(X[:,0])
 y = list(X[:,1])
@@ -16,24 +16,24 @@ points = 400
 #plt.scatter(x,y)
 
 # Figure how to get a k valuesx
-k = 2
+k = 4
 centroid_x = []
 centroid_y = []
 for i in range(k):
-    centroid_x.append(random.randint(1,3))
-    centroid_y.append(random.randint(1,3))
+    centroid_x.append(random.uniform(min(x),max(x)))
+    centroid_y.append(random.uniform(min(y),max(y)))
 # plt.scatter(centroid_x,centroid_y)
 # plt.show()
 
 # Assign clusters to each point and then use this to get next centroids 
 iterations = 20
 
-colors = ["#ff7f0e" , "#1f77b4"]
+colors = ["#ff7f0e" , "#1f77b4" , "tan" , "slateblue"]
 
 def dist(x1, y1, x2, y2):
     return math.sqrt((x1-x2)**2 + (y1-y2)**2)
 
-arr = [[[],[]],[[],[]]]
+arr = [[[],[]],[[],[]], [[],[]],[[],[]]]
 
 for l in range(iterations):
     for i in range(points):
@@ -52,7 +52,8 @@ for l in range(iterations):
         centroid_x[j] = sum(arr[j][0]) / len(arr[j][0])
         centroid_y[j] = sum(arr[j][1]) / len(arr[j][1])
 
-    arr = [[[],[]],[[],[]]]
+    sarr = [[[],[]],[[],[]], [[],[]],[[],[]]]
+    
 
 
 

@@ -1,0 +1,6 @@
+heart rate analysis 
+image detection model
+    eye tarcking // done
+    head tracking // done
+temprature analysis
+combining all three
